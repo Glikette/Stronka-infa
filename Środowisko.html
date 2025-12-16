@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekologia Demogorgonów</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- NAGŁÓWEK: tytuł nad nawigacją -->
+<header class="site-header">
+    <div class="title-wrap">
+        <h1 class="flicker-title special-text" id="titleText">Demogorgony</h1>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html">Strona główna</a>
+        <a href="rozwój.html">Rozwój</a>
+        <a href="Środowisko.html">Środowisko</a>
+        <a href="ciekawostki.html">Ciekawostki</a>
+    </nav>
+</header>
+
+<div class="content">
+
+<h2>Upside Down — środowisko naturalne</h2>
+<p>Upside Down to równoległa, zatruta wersja naszego świata. Panuje tam stała noc, temperatura jest niska, a cała przestrzeń pokryta jest pajęczynową strukturą organiczną, przypominającą spleśniałe kłącza. Rośliny są martwe, a powietrze wypełniają cząstki przypominające zarodniki.<br> <br>Demogorgon żyje i poluje w tym środowisku naturalnie — jest jego częścią.</p>
+
+<img src="upsidedown.jpg" width="700" height="300" class="down">
+
+<h2><br>Sposób polowania</h2>
+<p>W serialu widzimy, że demogorgon:</p>
+<ul>
+    <li>kieruje się krwią,</li>
+    <li>potrafi teleportować się między wymiarami przez „wykwity” portalu,</li>
+    <li>przemieszcza się niemal bezgłośnie,</li>
+    <li>reaguje na bodźce dźwiękowe.</li>  
+</ul>
+
+
+<h2><br>Łańcuch pokarmowy</h2>
+
+<p>Demogorgon jest drapieżnikiem szczytowym. Nad nim jest jedynie Mind Flayer (Jedenastka określa go jako „cień”), <br> który może przejmować kontrolę nad wszystkimi istotami Upside Down. <br><br>Mind Flayer → Demogorgon → Demodogi → mniejsze organizmy grzybopodobne</b></p>
+
+<h2><br>Zachowania społeczne</h2>
+<p>Demogorgony w stadium dorosłym są zazwyczaj samotnikami. Jednak demodogi wykazują zachowania społeczne, <br> działając jako zorganizowane grupy pod kontrolą Mind Flayera. Widzimy, że demodogi współpracują podczas polowań i ataków.</p>
+
+</div>
+
+<script>
+// EFEKT MRUGANIA (FLICKER): opakuj litery i interwał mrugania
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('titleText');
+    const t = el.textContent;
+    el.innerHTML = t.split('').map(c=>`<span class="letter">${c}</span>`).join('');
+    setInterval(flickerEffect,13000);
+});
+
+// Funkcja:(~70%) liter, klasę 'flick' na 5s
+function flickerEffect(){
+    const letters=document.querySelectorAll('.letter');
+    const n=Math.floor(letters.length*0.7);
+    const set=new Set();
+    while(set.size<n){set.add(Math.floor(Math.random()*letters.length));}
+    letters.forEach(l=>l.classList.remove('flick'));
+    set.forEach(i=>letters[i].classList.add('flick'));
+    setTimeout(()=>letters.forEach(l=>l.classList.remove('flick')),5000);
+}
+</script>
+
+</body>
+</html>

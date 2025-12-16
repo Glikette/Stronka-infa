@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- STRONA: ciekawostki.html — Ciekawostki, cytaty i obrazy związane z demogorgonami -->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciekawostki o Demogorgonach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- NAGŁÓWEK: tytuł nad nawigacją -->
+<header class="site-header">
+    <div class="title-wrap">
+        <h1 class="flicker-title special-text" id="titleText">Demogorgony</h1>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html">Strona główna</a>
+        <a href="rozwój.html">Rozwój</a>
+        <a href="Środowisko.html">Środowisko</a>
+        <a href="ciekawostki.html">Ciekawostki</a>
+    </nav>
+</header>
+
+<div class="content">
+
+<h2>Ciekawostki kanoniczne</h2>
+
+<ul>
+    <li>Demogorgon nie ma oczu — prawdopodobnie używa echolokacji lub wyczuwa wibracje.</li>
+    <li>Gatunek ten może przechodzić między wymiarami, ale potrzebuje portalu.</li>
+    <li>Jeden z demodogów został oswojony chwilowo przez Dustina (Dart).</li>  
+    <li>Demogorgony są odporne na większość broni konwencjonalnej.</li>
+    <li>Demodogi mogą okazywać lojalność wobec osób, które je wcześniej karmiły.</li>
+</ul>
+
+<h2>Demogorgony w kulturze</h2> 
+<p>Demogorgon to postać z mitologii greckiej, często przedstawiana jako potężny demon lub bóg podziemi. <br> W literaturze i grach fabularnych, takich jak Dungeons & Dragons, demogorgon jest zazwyczaj ukazywany jako przerażający władca demonów. <br> Twórcy serialu „Stranger Things” wykorzystali tę nazwę, aby nadać swoim stworzeniom mroczny i tajemniczy charakter.</p>
+<p>W popkulturze demogorgony stały się symbolem nieznanego i przerażającego, często wykorzystywanym w horrorach i fantastyce naukowej.</p>
+
+
+<figure>
+<img src="strangerthings_dart_demodog_dustin.jpg" width="800" height="400" class="down" alt="Dart demodog" style="display: block; margin: 0 auto;">
+<figcaption style="text-align: center; font-style: italic; color: rgb(108, 83, 216); ">Dart — oswojony demodog z serialu „Stranger Things” (źródło: Netflix)</figcaption>
+</figure>
+
+
+<h2 style="text-align: center;"><br>Cytat</h2>
+<blockquote style="color: gray; font-size: x-large ; text-align: center;"><br><i>„Demogorgon nie jest samotną bestią — jest narzędziem większej inteligencji, która patrzy przez wszystkie stworzenia Upside Down.”</i></blockquote>
+
+</div>
+
+
+<script>
+// EFEKT MRUGANIA (FLICKER): opakuj litery i ustaw interwał
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('titleText');
+    const t = el.textContent;
+    el.innerHTML = t.split('').map(c=>`<span class="letter">${c}</span>`).join('');
+    setInterval(flickerEffect,13000);
+});
+
+// Funkcja mrugania: ~70% liter, klasa 'flick' na 5s
+function flickerEffect(){
+    const letters=document.querySelectorAll('.letter');
+    const n=Math.floor(letters.length*0.7);
+    const set=new Set();
+    while(set.size<n){set.add(Math.floor(Math.random()*letters.length));}
+    letters.forEach(l=>l.classList.remove('flick'));
+    set.forEach(i=>letters[i].classList.add('flick'));
+    setTimeout(()=>letters.forEach(l=>l.classList.remove('flick')),5000);
+}
+</script>
+
+</body>
+</html>

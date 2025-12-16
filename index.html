@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- STRONA: index.html — Strona główna (główne informacje i spis treści) -->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demogorgony – Strona Główna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ======= NAGŁÓWEK: tytuł nad nawigacją ======= -->
+<header class="site-header">
+    <div class="title-wrap">
+        <h1 class="flicker-title special-text" id="titleText">Demogorgony</h1>
+    </div>
+
+    <!-- nawigacja zawsze pod tytułem -->
+    <nav class="main-nav">
+        <a href="index.html">Strona główna</a>
+        <a href="rozwój.html">Rozwój</a>
+        <a href="Środowisko.html">Środowisko</a>
+        <a href="ciekawostki.html">Ciekawostki</a>
+    </nav>
+</header>
+
+<!-- ======= ZAWARTOŚĆ ======= -->
+<div class="content">
+
+    <h2>Wprowadzenie – kanoniczne</h2>
+
+    <p>
+        Demogorgon to pierwsza potwierdzona istota z wymiaru Upside Down, która przedostała się do świata ludzi. Po raz pierwszy pojawia się w 1983 roku w Hawkins, po eksperymentach prowadzonych w Hawkins National Laboratory. To właśnie kontakt Jedenastki (Eleven) z tym wymiarem otworzył pierwszy portal, przez który demogorgon mógł zaatakować mieszkańców miasta.
+
+Stwór wyróżnia się humanoidalną sylwetką, lecz jego głowa pozbawiona jest twarzy — zamiast tego otwiera się jak kwiat, odsłaniając liczne warstwy ostrych zębów. Jest szybki, ekstremalnie silny i odporny na obrażenia, co widać podczas jego starcia z Eleven w finale pierwszego sezonu.
+    </p>
+
+    <img src="demo1.png" class="img-small" alt="Demogorgon">
+
+    <h2>Co znajdziesz na stronie?</h2>
+
+    <ul>
+        <li>opis wszystkich kanonicznych stadiów rozwoju demogorgona,</li>
+        <li>wyjaśnienie pochodzenia Upside Down w kontekście serialu,</li>
+        <li>zachowania i sposób polowania stwora,</li>
+        <li>fakty i wydarzenia związane z Hawkins Laboratory,</li>
+        <li>rolę demogorgona w większym planie Mind Flayera.</li>
+    </ul>
+
+    <h2>Podstawowa tabela porównawcza</h2>
+
+    <table class="data-table">
+        <tr><th>Nazwa</th><th>Informacja kanoniczna</th><th>Występowanie</th></tr>
+        <tr><td>Slug (larwa)</td><td>Mały pasożyt, wypluty przez Willa</td><td>Sezon 1, Sezon 2</td></tr>
+        <tr><td>Pollywog</td><td>Wczesna forma przypominająca kijankę</td><td>Sezon 2 – Dart</td></tr>
+        <tr><td>Demodog</td><td>Quadrupedalna forma dorastająca do demogorgona</td><td>Sezon 2</td></tr>
+        <tr><td>Demogorgon</td><td>Dorosła forma drapieżnika z Upside Down</td><td>Sezon 1, Sezon 4 (trening)</td></tr>
+    </table>
+
+</div>
+
+<!-- ======= EFEKT MRUGANIA TYTUŁU (FLICKER) ======= -->
+<script>
+// EFEKT MRUGANIA (FLICKER): opakuj litery i ustaw interwał mrugania
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('titleText');
+    const t = el.textContent;
+    el.innerHTML = t.split('').map(c=>`<span class="letter">${c}</span>`).join('');
+    setInterval(flickerEffect,13000);
+});
+
+// Funkcja: (~70%) liter, klasę 'flick' na 5s
+function flickerEffect(){
+    const letters=document.querySelectorAll('.letter');
+    const n=Math.floor(letters.length*0.7);
+    const set=new Set();
+    while(set.size<n){set.add(Math.floor(Math.random()*letters.length));}
+    letters.forEach(l=>l.classList.remove('flick'));
+    set.forEach(i=>letters[i].classList.add('flick'));
+    setTimeout(()=>letters.forEach(l=>l.classList.remove('flick')),5000);
+}
+</script>
+
+</body>
+</html>

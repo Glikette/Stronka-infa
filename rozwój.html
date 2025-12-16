@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- STRONA: rozwój.html — Etapy rozwoju i hierarchia demogorgonów -->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odmiany Demogorgonów</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- NAGŁÓWEK: tytuł nad nawigacją -->
+<header class="site-header">
+    <div class="title-wrap">
+        <h1 class="flicker-title special-text" id="titleText">Demogorgony</h1>
+    </div>
+    <nav class="main-nav">
+        <a href="index.html">Strona główna</a>
+        <a href="rozwój.html">Rozwój</a>
+        <a href="Środowisko.html">Środowisko</a>
+        <a href="ciekawostki.html">Ciekawostki</a>
+    </nav>
+</header>
+
+<div class="content">
+
+<h2>Stadia rozwoju Demogorgonów</h2>
+
+<p><b>Stadium 1: Larwa („Slug”)</b> - Po raz pierwszy widzimy je w finale pierwszego sezonu, kiedy Will wyrzuca z siebie małego pasożyta. <br> Stwór podobny jest do śliskiego robaka i stanowi pierwszy etap cyklu rozwojowego demogorgona. Larwy żyją w wilgotnych obszarach <br> Upside Down i mogą pasożytować na żywicielach.</p>
+<img src="slug.jpg" class="img-small" alt="larwa">
+
+<p><b>Stadium 2: Pollywog</b> — W drugim sezonie najlepiej przedstawia je Dart, którego Dustin znalazł w koszu na śmieci. <br> Forma przypomina kijankę z małymi ząbkami. Pollywogi jedzą wszystko — od nuggetów po żywe koty — i rosną bardzo szybko. <br> Mogą zmieniać temperaturę i stawać się agresywne, gdy poczują zagrożenie.</p>
+<img src="polly.jpg" class="img-small" alt="Pollywog">
+
+<p><b>Stadium 3: „Demodog”</b> — To stadium przejściowe pomiędzy formą pollywoga a dorosłym demogorgonem. Jest czworonożne, <br> szybkie i zdolne do pracy grupowej. W serialu widzimy całe stado demodogów, które działa jak jedna zbiorowa świadomość pod kontrolą Mind Flayera. Demodogi odpowiadają m.in. za atak na laboratorium.</p>
+<img src="demodog.jpg" class="img-small" alt="doggy">
+
+<p><b>Stadium 4: Dorosły Demogorgon</b> — Dorosły demogorgon jest humanoidalny i dwunożny. Posiada potężną siłę, <br> ostre pazury i zdolność otwierania głowy w pięciu płatkach, tworząc „kwiat” pełen zębów. W sezonie 1 poluje samotnie, ale w sezonie 4 widzimy młode demogorgony tresowane przez Rosjan, co potwierdza, że stwór można hodować w niewoli.</p>
+<img src="demooo.jpg" class="img-small" alt="demo">
+
+<h2> <br>Hierarchia</h2>
+<p>W serialu potwierdzono:</p>
+
+<ul>
+    <li>Demogorgony w stadium dorosłym są na szczycie hierarchii,</li>
+    <li>demodogi działają jako żołnierze i zwiadowcy,</li>
+    <li>pollywogi i larwy pełnią rolę żywicieli i źródeł nowych demogorgonów.</li>
+</ul>
+</div>
+
+<script>
+// EFEKT MRUGANIA (FLICKER): opakuj litery i ustaw interwał mrugania
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('titleText');
+    const t = el.textContent;
+    el.innerHTML = t.split('').map(c=>`<span class="letter">${c}</span>`).join('');
+    setInterval(flickerEffect,13000);
+});
+
+// Funkcja: (~70%) liter, klasę 'flick' na 5s
+function flickerEffect(){
+    const letters=document.querySelectorAll('.letter');
+    const n=Math.floor(letters.length*0.7);
+    const set=new Set();
+    while(set.size<n){set.add(Math.floor(Math.random()*letters.length));}
+    letters.forEach(l=>l.classList.remove('flick'));
+    set.forEach(i=>letters[i].classList.add('flick'));
+    setTimeout(()=>letters.forEach(l=>l.classList.remove('flick')),5000);
+}
+</script>
+
+</body>
+</html>
